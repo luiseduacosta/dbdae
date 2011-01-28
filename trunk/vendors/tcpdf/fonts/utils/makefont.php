@@ -7,20 +7,20 @@
 // License     : GNU LGPL (http://www.gnu.org/copyleft/lesser.html)
 // 	----------------------------------------------------------------------------
 // 	Copyright (C) 2008  Nicola Asuni - Tecnick.com S.r.l.
-// 	
+//
 // 	This program is free software: you can redistribute it and/or modify
 // 	it under the terms of the GNU Lesser General Public License as published by
 // 	the Free Software Foundation, either version 2.1 of the License, or
 // 	(at your option) any later version.
-// 	
+//
 // 	This program is distributed in the hope that it will be useful,
 // 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 // 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // 	GNU Lesser General Public License for more details.
-// 	
+//
 // 	You should have received a copy of the GNU Lesser General Public License
 // 	along with this program.  If not, see <http://www.gnu.org/licenses/>.
-// 	
+//
 // 	See LICENSE.TXT file for more information.
 //  ----------------------------------------------------------------------------
 //
@@ -45,10 +45,10 @@
  * @package com.tecnick.tcpdf
  * @link http://www.tcpdf.org
  * @license http://www.gnu.org/copyleft/lesser.html LGPL
-*/
+ */
 
 /**
- * 
+ *
  * @param string $fontfile path to font file (TTF, OTF or PFB).
  * @param string $fmfile font metrics file (UFM or AFM).
  * @param boolean $embedded Set to false to not embed the font, true otherwise (default).
@@ -257,22 +257,22 @@ function ReadUFM($file, &$cidtogidmap) {
 			//Character metrics
 			$cc = (int)$e[1];
 			if ($cc != -1) {
-			$gn = $e[7];
-			$w = $e[4];
-			$glyph = $e[10];
-			$widths[$cc] = $w;
-			if($cc == ord('X')) {
-				$fm['CapXHeight'] = $e[13];
+				$gn = $e[7];
+				$w = $e[4];
+				$glyph = $e[10];
+				$widths[$cc] = $w;
+				if($cc == ord('X')) {
+					$fm['CapXHeight'] = $e[13];
+				}
+				// Set GID
+				if (($cc >= 0) AND ($cc < 0xFFFF) AND $glyph) {
+					$cidtogidmap{($cc * 2)} = chr($glyph >> 8);
+					$cidtogidmap{(($cc * 2) + 1)} = chr($glyph & 0xFF);
+				}
 			}
-			// Set GID
-			if (($cc >= 0) AND ($cc < 0xFFFF) AND $glyph) {
-				$cidtogidmap{($cc * 2)} = chr($glyph >> 8);
-				$cidtogidmap{(($cc * 2) + 1)} = chr($glyph & 0xFF);
+			if(($gn == '.notdef') AND (!isset($fm['MissingWidth']))) {
+				$fm['MissingWidth'] = $w;
 			}
-		}
-		if(($gn == '.notdef') AND (!isset($fm['MissingWidth']))) {
-			$fm['MissingWidth'] = $w;
-		}
 		} elseif($code == 'FontName') {
 			$fm['FontName'] = $param;
 		} elseif($code == 'Weight') {
@@ -353,87 +353,87 @@ function ReadAFM($file,&$map) {
 		'combiningdotbelow'=>'dotbelowcomb',
 		'dongsign'=>'dong'
 		);
-	foreach($a as $l) {
-		$e = explode(' ', rtrim($l));
-		if (count($e) < 2) {
-			continue;
-		}
-		$code = $e[0];
-		$param = $e[1];
-		if ($code == 'C') {
-			//Character metrics
-			$cc = (int)$e[1];
-			$w = $e[4];
-			$gn = $e[7];
-			if (substr($gn, -4) == '20AC') {
-				$gn = 'Euro';
+		foreach($a as $l) {
+			$e = explode(' ', rtrim($l));
+			if (count($e) < 2) {
+				continue;
 			}
-			if (isset($fix[$gn])) {
-				//Fix incorrect glyph name
-				foreach ($map as $c => $n) {
-					if ($n == $fix[$gn]) {
-						$map[$c] = $gn;
+			$code = $e[0];
+			$param = $e[1];
+			if ($code == 'C') {
+				//Character metrics
+				$cc = (int)$e[1];
+				$w = $e[4];
+				$gn = $e[7];
+				if (substr($gn, -4) == '20AC') {
+					$gn = 'Euro';
+				}
+				if (isset($fix[$gn])) {
+					//Fix incorrect glyph name
+					foreach ($map as $c => $n) {
+						if ($n == $fix[$gn]) {
+							$map[$c] = $gn;
+						}
 					}
 				}
+				if (empty($map)) {
+					//Symbolic font: use built-in encoding
+					$widths[$cc] = $w;
+				} else {
+					$widths[$gn] = $w;
+					if($gn == 'X') {
+						$fm['CapXHeight'] = $e[13];
+					}
+				}
+				if($gn == '.notdef') {
+					$fm['MissingWidth'] = $w;
+				}
+			} elseif($code == 'FontName') {
+				$fm['FontName'] = $param;
+			} elseif($code == 'Weight') {
+				$fm['Weight'] = $param;
+			} elseif($code == 'ItalicAngle') {
+				$fm['ItalicAngle'] = (double)$param;
+			} elseif($code == 'Ascender') {
+				$fm['Ascender'] = (int)$param;
+			} elseif($code == 'Descender') {
+				$fm['Descender'] = (int)$param;
+			} elseif($code == 'UnderlineThickness') {
+				$fm['UnderlineThickness'] = (int)$param;
+			} elseif($code == 'UnderlinePosition') {
+				$fm['UnderlinePosition'] = (int)$param;
+			} elseif($code == 'IsFixedPitch') {
+				$fm['IsFixedPitch'] = ($param == 'true');
+			} elseif($code == 'FontBBox') {
+				$fm['FontBBox'] = array($e[1], $e[2], $e[3], $e[4]);
+			} elseif($code == 'CapHeight') {
+				$fm['CapHeight'] = (int)$param;
+			} elseif($code == 'StdVW') {
+				$fm['StdVW'] = (int)$param;
 			}
-			if (empty($map)) {
-				//Symbolic font: use built-in encoding
-				$widths[$cc] = $w;
-			} else {
-				$widths[$gn] = $w;
-				if($gn == 'X') {
-					$fm['CapXHeight'] = $e[13];
+		}
+		if (!isset($fm['FontName'])) {
+			die('FontName not found');
+		}
+		if (!empty($map)) {
+			if (!isset($widths['.notdef'])) {
+				$widths['.notdef'] = 600;
+			}
+			if (!isset($widths['Delta']) AND isset($widths['increment'])) {
+				$widths['Delta'] = $widths['increment'];
+			}
+			//Order widths according to map
+			for ($i = 0; $i <= 255; $i++) {
+				if (!isset($widths[$map[$i]])) {
+					print "Warning: character ".$map[$i]." is missing\n";
+					$widths[$i] = $widths['.notdef'];
+				} else {
+					$widths[$i] = $widths[$map[$i]];
 				}
 			}
-			if($gn == '.notdef') {
-				$fm['MissingWidth'] = $w;
-			}
-		} elseif($code == 'FontName') {
-			$fm['FontName'] = $param;
-		} elseif($code == 'Weight') {
-			$fm['Weight'] = $param;
-		} elseif($code == 'ItalicAngle') {
-			$fm['ItalicAngle'] = (double)$param;
-		} elseif($code == 'Ascender') {
-			$fm['Ascender'] = (int)$param;
-		} elseif($code == 'Descender') {
-			$fm['Descender'] = (int)$param;
-		} elseif($code == 'UnderlineThickness') {
-			$fm['UnderlineThickness'] = (int)$param;
-		} elseif($code == 'UnderlinePosition') {
-			$fm['UnderlinePosition'] = (int)$param;
-		} elseif($code == 'IsFixedPitch') {
-			$fm['IsFixedPitch'] = ($param == 'true');
-		} elseif($code == 'FontBBox') {
-			$fm['FontBBox'] = array($e[1], $e[2], $e[3], $e[4]);
-		} elseif($code == 'CapHeight') {
-			$fm['CapHeight'] = (int)$param;
-		} elseif($code == 'StdVW') {
-			$fm['StdVW'] = (int)$param;
 		}
-	}
-	if (!isset($fm['FontName'])) {
-		die('FontName not found');
-	}
-	if (!empty($map)) {
-		if (!isset($widths['.notdef'])) {
-			$widths['.notdef'] = 600;
-		}
-		if (!isset($widths['Delta']) AND isset($widths['increment'])) {
-			$widths['Delta'] = $widths['increment'];
-		}
-		//Order widths according to map
-		for ($i = 0; $i <= 255; $i++) {
-			if (!isset($widths[$map[$i]])) {
-				print "Warning: character ".$map[$i]." is missing\n";
-				$widths[$i] = $widths['.notdef'];
-			} else {
-				$widths[$i] = $widths[$map[$i]];
-			}
-		}
-	}
-	$fm['Widths'] = $widths;
-	return $fm;
+		$fm['Widths'] = $widths;
+		return $fm;
 }
 
 function MakeFontDescriptor($fm, $symbolic=false) {

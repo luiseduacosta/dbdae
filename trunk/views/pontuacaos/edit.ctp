@@ -2,8 +2,7 @@
 
 <?php echo $html->link('Editar aluno', '/Alunos/edit/' . $aluno['Aluno']['id']); ?>
 
-<p>
-DRE: <?php echo $aluno['Aluno']['dre']; ?><br>
+<p>DRE: <?php echo $aluno['Aluno']['dre']; ?><br>
 Nome: <?php echo $aluno['Aluno']['nome']; ?><br>
 Curso: <?php echo $aluno['Aluno']['curso']; ?><br>
 Benefício: <?php echo $aluno['Aluno']['beneficio']; ?><br>

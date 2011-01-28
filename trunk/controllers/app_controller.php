@@ -1,4 +1,5 @@
 <?php
+
 /* SVN FILE: $Id$ */
 /**
  * Short description for file.
@@ -25,6 +26,7 @@
  * @lastmodified  $Date$
  * @license       http://www.opensource.org/licenses/mit-license.php The MIT License
  */
+
 /**
  * Short description for class.
  *
@@ -46,7 +48,8 @@ class AppController extends Controller {
         $this->Auth->loginError = "Login inválido."; // mensagem de erro
         $this->Auth->authError = "Área restrita, por favor faça login."; // mensagem de acesso restrito
         $this->Auth->loginRedirect = array('action' => 'add', 'controller' => 'alunos');
-
     }
+
 }
+
 ?>

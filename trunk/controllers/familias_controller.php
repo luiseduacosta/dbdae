@@ -4,7 +4,6 @@ class FamiliasController extends AppController {
 
     var $name = 'Familias';
     // var $scaffold;
-
     var $components = array('Auth', 'Acl');
 
     function beforeFilter() {
@@ -12,7 +11,6 @@ class FamiliasController extends AppController {
         $this->Auth->allow('add');
         $this->Auth->loginError = 'Error! Tente novamente';
         $this->Auth->authError = "Usuário não autorizado";
-
     }
 
     function add($id = NULL) {
@@ -45,12 +43,10 @@ class FamiliasController extends AppController {
                 $this->Familia->Aluno->save($this->data);
 
                 $this->Session->setFlash("Integrante da familia inserido");
-                $aluno_id =  $this->data['Familia']['aluno_id'];
+                $aluno_id = $this->data['Familia']['aluno_id'];
                 $this->redirect("/Familias/add/" . $aluno_id);
-
             }
         }
-
     }
 
     function inserir($id = NULL) {
@@ -72,7 +68,7 @@ class FamiliasController extends AppController {
             if ($this->Familia->save($this->data)) {
 
                 $this->Session->setFlash("Integrante da familia inserido");
-                $aluno_id =  $this->data['Familia']['aluno_id'];
+                $aluno_id = $this->data['Familia']['aluno_id'];
 
                 // Calcula o rendimento familiar
                 $familia = $this->Familia->findAllByAlunoId($aluno_id);
@@ -87,15 +83,14 @@ class FamiliasController extends AppController {
                 $this->Familia->Aluno->save($this->data);
 
                 $this->redirect("/Familias/listar/" . $aluno_id);
-
             }
         }
-
     }
 
     /*
-    * Capturo a familia do aluno
-    */
+     * Capturo a familia do aluno
+     */
+
     function listar($id = NULL) {
 
         $aluno = $this->Familia->Aluno->findById($id);
@@ -103,13 +98,12 @@ class FamiliasController extends AppController {
 
         $familia = $this->Familia->findAllByAlunoId($id);
         $this->set('familia', $familia);
-
     }
 
     function edit($id = NULL) {
 
         $familia = $this->Familia->findById($id);
-        $aluno_id =  $familia['Familia']['aluno_id'];
+        $aluno_id = $familia['Familia']['aluno_id'];
         // debug($aluno_id);
 
         $this->set('familia_id', $id);
@@ -138,20 +132,19 @@ class FamiliasController extends AppController {
                 $this->loadModel('Aluno');
                 $this->Aluno->create();
                 $this->Aluno->save(array(
-                        'id' => $aluno_id,
-                        'rendimento_familiar'=>$total)
+                    'id' => $aluno_id,
+                    'rendimento_familiar' => $total)
                 );
 
                 $this->redirect('/Familias/listar/' . $aluno_id);
             }
         }
-
     }
 
     function excluir($id = NULL) {
 
         $aluno = $this->Familia->findById($id);
-        $aluno_id =  $aluno['Familia']['aluno_id'];
+        $aluno_id = $aluno['Familia']['aluno_id'];
 
         $this->Familia->delete($id);
 
@@ -169,8 +162,8 @@ class FamiliasController extends AppController {
 
         $this->Session->setFlash('Registro excluído');
         $this->redirect("listar/" . $aluno_id);
-
     }
+
 }
 
 ?>

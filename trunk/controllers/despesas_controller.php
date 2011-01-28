@@ -4,7 +4,6 @@ class DespesasController extends AppController {
 
     var $name = "Despesas";
     // var $scaffold;
-
     var $components = array('Auth', 'Acl');
 
     function beforeFilter() {
@@ -12,7 +11,6 @@ class DespesasController extends AppController {
         $this->Auth->allow('add');
         $this->Auth->loginError = 'Error! Tente novamente';
         $this->Auth->authError = "Usuário não autorizado";
-
     }
 
     function add($id = NULL) {
@@ -34,15 +32,14 @@ class DespesasController extends AppController {
                 $this->Session->setFlash("Registro inserido");
                 $aluno_id = $this->data['Despesa']['aluno_id'];
                 $this->redirect("/Despesas/add/$aluno_id");
-
             }
         }
-
     }
 
     /*
      * Lista as despesas da familia
-    */
+     */
+
     function listar($id = NULL) {
 
         $aluno = $this->Despesa->Aluno->findById($id);
@@ -50,7 +47,6 @@ class DespesasController extends AppController {
 
         $despesa = $this->Despesa->findAllByAlunoId($id);
         $despesa = $this->set('despesa', $despesa);
-
     }
 
     function edit($id = NULL) {
@@ -63,7 +59,6 @@ class DespesasController extends AppController {
         if (empty($this->data)) {
 
             $this->data = $this->Despesa->read();
-
         } else {
 
             if ($this->Despesa->save($this->data)) {
@@ -71,11 +66,9 @@ class DespesasController extends AppController {
                 // $this->set('aluno_id', $id);
                 $this->Session->setFlash("Dado inserido");
                 $aluno_id = $this->data['Despesa']['aluno_id'];
-                $this->redirect("/Despesas/listar/".$aluno_id);
+                $this->redirect("/Despesas/listar/" . $aluno_id);
             }
-
         }
-
     }
 
     function inserir($id = NULL) {
@@ -97,21 +90,19 @@ class DespesasController extends AppController {
                 $this->Session->setFlash("Registro inserido");
                 $aluno_id = $this->data['Despesa']['aluno_id'];
                 $this->redirect("/Despesas/listar/" . $aluno_id);
-
             }
         }
-
     }
 
     function excluir($id = NULL) {
 
         $aluno = $this->Despesa->findById($id);
-        $aluno_id =  $aluno['Despesa']['aluno_id'];
+        $aluno_id = $aluno['Despesa']['aluno_id'];
         $this->Despesa->delete($id);
         $this->Session->setFlash('Registro excluído');
         $this->redirect("listar/" . $aluno_id);
-
     }
+
 }
 
 ?>

@@ -3,21 +3,16 @@
 class PontuacaosController extends AppController {
 
     var $name = 'Pontuacaos';
-
     var $paginate = array(
-            'limit'=> 10,
+        'limit' => 10,
             // 'fields'=>array('Aluno.id', 'Aluno.nome', 'Aluno.curso', 'Aluno.dre', 'Pontuacao.percapita'),
             // 'order'=>array('Aluno.nome'=>'asc')
     );
-
     var $helpers = array("Javascript");
-
-    
 
     function beforeFilter() {
 
         $this->Auth->allow('add', 'edit', 'index0');
-
     }
 
     function add($id = NULL) {
@@ -69,15 +64,12 @@ class PontuacaosController extends AppController {
         if (empty($this->data)) {
 
             $this->data = $this->Pontuacao->read();
-
         } else {
 
             if ($this->Pontuacao->save($this->data)) {
                 $this->Session->setFlash("Atualizado");
             }
-
         }
-
     }
 
     function view($id = NULL) {
@@ -114,23 +106,19 @@ class PontuacaosController extends AppController {
             $renda_total = $renda_total + $c_renda['Renda']['valor_mensal'];
         }
         $this->set('renda_total', $renda_total);
-
     }
 
     // Usuarios nao autorizados
     function index0() {
 
         $this->set("pontuacao", $this->paginate('Pontuacao'));
-
     }
-
 
     // Usuarios autorizados
     function index() {
 
         $pontuacao = $this->Pontuacao->Aluno->find("all");
         $this->set("pontuacao", $pontuacao);
-
     }
 
 }

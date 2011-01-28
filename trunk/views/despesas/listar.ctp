@@ -4,32 +4,24 @@
 
 <?php if ($despesa) {; ?>
 <table>
-    <tr>
-        <th>Id</th>
-	<th>Especificação</th>
-        <th>Valor mensal</th>
-        <th>Comprovação</th>
-        <th>Excluir</th>
-    </tr>
-    <?php foreach ($despesa as $c_despesa): ?>
-    <tr>
-    	<td>
-	<?php echo $html->link($c_despesa['Despesa']['id'],"/Despesas/edit/".$c_despesa['Despesa']['id']); ?>
-	</td>
-        <td>
-            <?php echo $c_despesa['Despesa']['especificacao']; ?>
-        </td>
-        <td>
-            <?php echo $c_despesa['Despesa']['valor']; ?>
-        </td>
-        <td>
-            <?php echo $c_despesa['Despesa']['comprovacao']; ?>
-        </td>
-        <td>
-            <?php echo $html->link('X', 'excluir/' . $c_despesa['Despesa']['id']); ?>
-        </td>
-    </tr>
-    <?php endforeach; ?>
+	<tr>
+		<th>Id</th>
+		<th>Especificação</th>
+		<th>Valor mensal</th>
+		<th>Comprovação</th>
+		<th>Excluir</th>
+	</tr>
+	<?php foreach ($despesa as $c_despesa): ?>
+	<tr>
+		<td><?php echo $html->link($c_despesa['Despesa']['id'],"/Despesas/edit/".$c_despesa['Despesa']['id']); ?>
+		</td>
+		<td><?php echo $c_despesa['Despesa']['especificacao']; ?></td>
+		<td><?php echo $c_despesa['Despesa']['valor']; ?></td>
+		<td><?php echo $c_despesa['Despesa']['comprovacao']; ?></td>
+		<td><?php echo $html->link('X', 'excluir/' . $c_despesa['Despesa']['id']); ?>
+		</td>
+	</tr>
+	<?php endforeach; ?>
 </table>
 <?php }; ?>
 
@@ -38,7 +30,7 @@
 
 <br />
 
-Editar: 
+Editar:
 <?php echo $html->link(" Dados pessoais","/Alunos/edit/" . $aluno['Aluno']['id']); ?>
 
 <?php echo $html->link(" Transporte","/Alunos/etransporte/" . $aluno['Aluno']['id']); ?>

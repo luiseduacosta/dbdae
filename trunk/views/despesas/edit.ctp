@@ -1,8 +1,7 @@
 <?php pr($despesa); ?>
 <h1>Inscrição para benefício moradia/bolsa auxílio</h1>
 
-<p>
-DRE: <?php echo $despesa['Aluno']['dre']; ?><br>
+<p>DRE: <?php echo $despesa['Aluno']['dre']; ?><br>
 Nome: <?php echo $despesa['Aluno']['nome']; ?><br>
 Curso: <?php echo $despesa['Aluno']['curso']; ?><br>
 Benefício: <?php echo $despesa['Aluno']['beneficio']; ?><br>

@@ -5,7 +5,7 @@
 // Last Update : 2009-09-30
 //
 // Description : Example 020 for TCPDF class
-//               Two columns composed by MultiCell of different 
+//               Two columns composed by MultiCell of different
 //               heights
 //
 // Author: Nicola Asuni
@@ -21,41 +21,41 @@
 //============================================================+
 
 /**
-* Creates an example PDF TEST document using TCPDF
-* @package com.tecnick.tcpdf
-* @abstract TCPDF - Example: Two columns composed by MultiCell of different heights
-* @author Nicola Asuni
-* @copyright 2004-2009 Nicola Asuni - Tecnick.com S.r.l (www.tecnick.com) Via Della Pace, 11 - 09044 - Quartucciu (CA) - ITALY - www.tecnick.com - info@tecnick.com
-* @link http://tcpdf.org
-* @license http://www.gnu.org/copyleft/lesser.html LGPL
-* @since 2008-03-04
-*/
+ * Creates an example PDF TEST document using TCPDF
+ * @package com.tecnick.tcpdf
+ * @abstract TCPDF - Example: Two columns composed by MultiCell of different heights
+ * @author Nicola Asuni
+ * @copyright 2004-2009 Nicola Asuni - Tecnick.com S.r.l (www.tecnick.com) Via Della Pace, 11 - 09044 - Quartucciu (CA) - ITALY - www.tecnick.com - info@tecnick.com
+ * @link http://tcpdf.org
+ * @license http://www.gnu.org/copyleft/lesser.html LGPL
+ * @since 2008-03-04
+ */
 
 require_once('../config/lang/eng.php');
 require_once('../tcpdf.php');
 
 // extend TCPF with custom functions
-class MYPDF extends TCPDF { 
+class MYPDF extends TCPDF {
 	public function MultiRow($left, $right) {
 		//MultiCell($w, $h, $txt, $border=0, $align='J', $fill=0, $ln=1, $x='', $y='', $reseth=true, $stretch=0)
-		
+
 		$page_start = $this->getPage();
 		$y_start = $this->GetY();
-		
+
 		// write the left cell
 		$this->MultiCell(40, 0, $left, 1, 'R', 0, 2, '', '', true, 0);
-		
+
 		$page_end_1 = $this->getPage();
 		$y_end_1 = $this->GetY();
-		
+
 		$this->setPage($page_start);
-		
+
 		// write the right cell
 		$this->MultiCell(0, 0, $right, 1, 'J', 0, 1, $this->GetX() ,$y_start, true, 0);
-		
+
 		$page_end_2 = $this->getPage();
 		$y_end_2 = $this->GetY();
-		
+
 		// set the new row position by case
 		if (max($page_end_1,$page_end_2) == $page_start) {
 			$ynew = max($y_end_1, $y_end_2);
@@ -66,11 +66,11 @@ class MYPDF extends TCPDF {
 		} else {
 			$ynew = $y_end_2;
 		}
-		
+
 		$this->setPage(max($page_end_1,$page_end_2));
 		$this->SetXY($this->GetX(),$ynew);
 	}
-	
+
 }
 
 // create new PDF document
@@ -133,6 +133,6 @@ $pdf->lastPage();
 $pdf->Output('example_020.pdf', 'I');
 
 //============================================================+
-// END OF FILE                                                 
+// END OF FILE
 //============================================================+
-?> 
+?>
