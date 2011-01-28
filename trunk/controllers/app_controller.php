@@ -36,7 +36,7 @@
  */
 class AppController extends Controller {
 
-    var $components = array('Auth');
+    var $components = array('Auth', 'Acl');
 
     // var $helpers = array('html', 'Javascript');
 
@@ -45,6 +45,7 @@ class AppController extends Controller {
         Security::setHash('sha1'); // Setamos o tipo de hash que iremos gerar
         $this->Auth->loginError = "Login inválido."; // mensagem de erro
         $this->Auth->authError = "Área restrita, por favor faça login."; // mensagem de acesso restrito
+        $this->Auth->loginRedirect = array('action' => 'add', 'controller' => 'alunos');
 
     }
 }

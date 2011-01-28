@@ -51,9 +51,7 @@ class AlunosController extends AppController {
             $user_id  = $this->User->getLastInsertID();
 
             // Para a lista de control de acesso
-            // $this->Session->write('user', $this->data['User']['username']);
             $this->loadModel('Aro');
-            // $parent = $this->Acl->Aro->findByAlias('usuario');
             $this->Aro->create();
             $this->Aro->save(array(
                     'alias' => $this->data['Aluno']['dre'],
@@ -61,19 +59,6 @@ class AlunosController extends AppController {
                     'foreign_key' => $user_id,
                     'parent_id' =>'3' // usuario
             ));
-            // $this->Acl->Aro->save();
-
-            $this->loadModel('Aco');
-            $this->Aco->create();
-            $this->Aco->save(array(
-                    'alias' => $this->data['Aluno']['dre'], // id do aluno + o nome, ou somente o nome,
-                    'model' => 'Aluno',
-                    'foreign_key' => $this->Aluno->id,
-                    'parent_id' => '1' // Aluno (controller do modelo Aluno
-            ));
-            // $this->Acl->Aro->save();
-            // $this->Acl->allow('Users', $this->data['Aluno']['dre'], 'add');
-            // $this->Acl->allow($this->Session->read('user'), $this->data['Aluno']['dre']);
 
             $aluno_id  = $this->Aluno->getLastInsertID();
             $this->Session->setFlash("Dados inseridos");
@@ -82,7 +67,7 @@ class AlunosController extends AppController {
     }
 
     /*
-	 * Insere a renda familiar e observações
+     * Insere a renda familiar e observações
     */
     function familia($id = NULL) {
 
