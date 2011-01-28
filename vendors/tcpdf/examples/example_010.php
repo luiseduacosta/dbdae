@@ -3,12 +3,12 @@
 // File name   : example_010.php
 // Begin       : 2008-03-04
 // Last Update : 2010-02-24
-// 
+//
 // Description : Example 010 for TCPDF class
 //               Text on multiple columns
-// 
+//
 // Author: Nicola Asuni
-// 
+//
 // (c) Copyright:
 //               Nicola Asuni
 //               Tecnick.com s.r.l.
@@ -35,34 +35,34 @@ require_once('../tcpdf.php');
 
 
 /**
-* Extend TCPDF to work with multiple columns
-*/
+ * Extend TCPDF to work with multiple columns
+ */
 class MC_TCPDF extends TCPDF {
-	
+
 	/**
 	 * @var number of colums
 	 * @access protected
 	 */
 	protected $ncols = 3;
-	
+
 	/**
 	 * @var columns width
 	 * @access protected
 	 */
 	protected $colwidth = 57;
-	
+
 	/**
 	 * @var current column
 	 * @access protected
 	 */
 	protected $col = 0;
-	
+
 	/**
 	 * @var y position of the beginning of column
 	 * @access protected
 	 */
 	protected $col_start_y;
-	
+
 	/**
 	 * Set position at a given column
 	 * @param $col column number (from 0 to $ncols-1)
@@ -94,7 +94,7 @@ class MC_TCPDF extends TCPDF {
 		// fix for HTML mode
 		$this->newline = true;
 	}
-	
+
 	/**
 	 * Overwrites the AcceptPageBreak() method to switch between columns
 	 * @return boolean false
@@ -112,7 +112,7 @@ class MC_TCPDF extends TCPDF {
 		// avoid page breaking from checkPageBreak()
 		return false;
 	}
-	
+
 	/**
 	 * Set chapter title
 	 * @param int $num chapter number
@@ -127,7 +127,7 @@ class MC_TCPDF extends TCPDF {
 		// save current Y position
 		$this->col_start_y = $this->GetY();
 	}
-	
+
 	/**
 	 * Print chapter body
 	 * @param string $file name of the file containing the chapter body
@@ -158,7 +158,7 @@ class MC_TCPDF extends TCPDF {
 		$this->SetLeftMargin($lMargin);
 		$this->SetRightMargin($rMargin);
 	}
-	
+
 	/**
 	 * Print chapter
 	 * @param int $num chapter number
@@ -206,10 +206,10 @@ $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
 $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
 
 //set image scale factor
-$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO); 
+$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 
 //set some language-dependent strings
-$pdf->setLanguageArray($l); 
+$pdf->setLanguageArray($l);
 
 // ---------------------------------------------------------
 
@@ -225,6 +225,6 @@ $pdf->PrintChapter(2, 'THE PROS AND CONS', '../cache/chapter_demo_2.txt', true);
 $pdf->Output('example_010.pdf', 'I');
 
 //============================================================+
-// END OF FILE                                                 
+// END OF FILE
 //============================================================+
 ?>

@@ -3,12 +3,12 @@
 // File name   : example_011.php
 // Begin       : 2008-03-04
 // Last Update : 2009-09-30
-// 
+//
 // Description : Example 011 for TCPDF class
 //               Colored Table
-// 
+//
 // Author: Nicola Asuni
-// 
+//
 // (c) Copyright:
 //               Nicola Asuni
 //               Tecnick.com s.r.l.
@@ -35,7 +35,7 @@ require_once('../tcpdf.php');
 
 // extend TCPF with custom functions
 class MYPDF extends TCPDF {
-	
+
 	// Load table data from file
 	public function LoadData($file) {
 		// Read file lines
@@ -46,7 +46,7 @@ class MYPDF extends TCPDF {
 		}
 		return $data;
 	}
-	
+
 	// Colored table
 	public function ColoredTable($header,$data) {
 		// Colors, line width and bold font
@@ -107,10 +107,10 @@ $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
 $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
 
 //set image scale factor
-$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO); 
+$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 
 //set some language-dependent strings
-$pdf->setLanguageArray($l); 
+$pdf->setLanguageArray($l);
 
 // ---------------------------------------------------------
 
@@ -135,6 +135,6 @@ $pdf->ColoredTable($header, $data);
 $pdf->Output('example_011.pdf', 'I');
 
 //============================================================+
-// END OF FILE                                                 
+// END OF FILE
 //============================================================+
 ?>

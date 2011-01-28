@@ -1,39 +1,54 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
-	<head>
-		<meta http-equiv="content-type" content="text/html; charset=utf-8">
-		<link rel="shortcut icon" type="image/ico" href="http://www.sprymedia.co.uk/media/images/favicon.ico">
-		
-		<title>FixedHeader example</title>
-		<style type="text/css" title="currentStyle">
-			@import "../../media/css/demo_page.css";
-			@import "../../media/css/demo_table.css";
-			@import "media/css/TableTools.css";
-			.FixedHeader_Cloned th { background-color: white; }
-		</style>
-		<script type="text/javascript" charset="utf-8" src="../../media/js/jquery.js"></script>
-		<script type="text/javascript" charset="utf-8" src="../../media/js/jquery.dataTables.js"></script>
-		<script type="text/javascript" charset="utf-8" src="js/FixedHeader.js"></script>
-		<script type="text/javascript" charset="utf-8">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<link rel="shortcut icon" type="image/ico"
+	href="http://www.sprymedia.co.uk/media/images/favicon.ico">
+
+<title>FixedHeader example</title>
+<style type="text/css" title="currentStyle">
+@import "../../media/css/demo_page.css";
+
+@import "../../media/css/demo_table.css";
+
+@import "media/css/TableTools.css";
+
+.FixedHeader_Cloned th {
+	background-color: white;
+}
+</style>
+<script type="text/javascript" charset="utf-8"
+	src="../../media/js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../media/js/jquery.dataTables.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/FixedHeader.js"></script>
+<script type="text/javascript" charset="utf-8">
 			$(document).ready( function () {
 				var oTable = $('#example').dataTable();
 				new FixedHeader( oTable );
 			} );
 		</script>
-	</head>
-	<body id="dt_example">
-		<div id="container">
-			<div class="full_width big">
-				FixedHeader example
-			</div>
-			
-			<h1>Preamble</h1>
-			<p>When displaying large amounts of data in a table, it can often be useful for the end user to have the column titles (the "thead" element as a whole in fact) always visible. This is particularly true if using DataTables with pagination disabled, or the display length is set to a high value.</p>
-			<p>The "FixedHeader" add-on for DataTables will ensure that your column titles will scroll with the page, showing at the top of the table at all times. Try the demo shown below - you might want to try resizing the window for full effect! Note also that the column titles remain clickable to perform sorting on the table.</p>
-			
-			<h1>Live example</h1>
-			<div id="demo">
-<table cellpadding="0" cellspacing="0" border="0" class="display" id="example">
+</head>
+<body id="dt_example">
+<div id="container">
+<div class="full_width big">FixedHeader example</div>
+
+<h1>Preamble</h1>
+<p>When displaying large amounts of data in a table, it can often be
+useful for the end user to have the column titles (the "thead" element
+as a whole in fact) always visible. This is particularly true if using
+DataTables with pagination disabled, or the display length is set to a
+high value.</p>
+<p>The "FixedHeader" add-on for DataTables will ensure that your
+column titles will scroll with the page, showing at the top of the table
+at all times. Try the demo shown below - you might want to try resizing
+the window for full effect! Note also that the column titles remain
+clickable to perform sorting on the table.</p>
+
+<h1>Live example</h1>
+<div id="demo">
+<table cellpadding="0" cellspacing="0" border="0" class="display"
+	id="example">
 	<thead>
 		<tr>
 			<th>Rendering engine</th>
@@ -46,32 +61,28 @@
 	<tbody>
 		<tr class="gradeX">
 			<td>Trident</td>
-			<td>Internet
-				 Explorer 4.0</td>
+			<td>Internet Explorer 4.0</td>
 			<td>Win 95+</td>
 			<td class="center">4</td>
 			<td class="center">X</td>
 		</tr>
 		<tr class="gradeC">
 			<td>Trident</td>
-			<td>Internet
-				 Explorer 5.0</td>
+			<td>Internet Explorer 5.0</td>
 			<td>Win 95+</td>
 			<td class="center">5</td>
 			<td class="center">C</td>
 		</tr>
 		<tr class="gradeA">
 			<td>Trident</td>
-			<td>Internet
-				 Explorer 5.5</td>
+			<td>Internet Explorer 5.5</td>
 			<td>Win 95+</td>
 			<td class="center">5.5</td>
 			<td class="center">A</td>
 		</tr>
 		<tr class="gradeA">
 			<td>Trident</td>
-			<td>Internet
-				 Explorer 6</td>
+			<td>Internet Explorer 6</td>
 			<td>Win 98+</td>
 			<td class="center">6</td>
 			<td class="center">A</td>
@@ -458,34 +469,37 @@
 		</tr>
 	</tfoot>
 </table>
-			</div>
-			<div class="spacer"></div>
-			
-			
-			<h1>Initialisation code</h1>
-			<pre>$(document).ready( function () {
+</div>
+<div class="spacer"></div>
+
+
+<h1>Initialisation code</h1>
+<pre>$(document).ready( function () {
 	var oTable = $('#example').dataTable();
 	new FixedHeader( oTable );
 } );</pre>
 
-			<h1>Examples</h1>
-			<ul>
-				<li><a href="index.html">Basic demo with just the HeaderFixed</a></li>
-				<li><a href="html_table.html">FixedHeader without requiring DataTables</a></li>
-				<li><a href="two_tables.html">Two tables with FixedHeaders on a single page</a></li>
-				<li><a href="top_bottom_left_right.html">A spreadsheet style layout with header and footer, left and right columns all fixed.</a></li>
-				<li><a href="zIndexes.html">Change the display order of the fixed elements (zIndex)</a></li>
-			</ul>
-		
-			<p>Empty paragraphs to force scrolling!...</p>
-			<p style="height:500px;">&nbsp;</p>
-			
-			
-			<div id="footer" style="text-align:center;">
-				<span style="font-size:10px;">
-					FixedHeader and DataTables &copy; Allan Jardine 2009.<br>
-				</span>
-			</div>
-		</div>
-	</body>
+<h1>Examples</h1>
+<ul>
+	<li><a href="index.html">Basic demo with just the HeaderFixed</a></li>
+	<li><a href="html_table.html">FixedHeader without requiring
+	DataTables</a></li>
+	<li><a href="two_tables.html">Two tables with FixedHeaders on
+	a single page</a></li>
+	<li><a href="top_bottom_left_right.html">A spreadsheet style
+	layout with header and footer, left and right columns all fixed.</a></li>
+	<li><a href="zIndexes.html">Change the display order of the
+	fixed elements (zIndex)</a></li>
+</ul>
+
+<p>Empty paragraphs to force scrolling!...</p>
+<p style="height: 500px;">&nbsp;</p>
+
+
+<div id="footer" style="text-align: center;"><span
+	style="font-size: 10px;"> FixedHeader and DataTables &copy;
+Allan Jardine 2009.<br>
+</span></div>
+</div>
+</body>
 </html>

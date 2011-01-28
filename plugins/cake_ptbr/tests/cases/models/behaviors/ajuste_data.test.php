@@ -52,79 +52,79 @@ class CakePtbrAjusteData extends CakeTestCase {
 		'data' => '20/03/2009',
 		'data_falsa' => '30/01/2009',
 		'publicado' => '01/01/2010'
-	);
+		);
 
-	function testSemNada() {
-		$esperado = array(
+		function testSemNada() {
+			$esperado = array(
 			'CakePtbrNoticiaSemNada' => array(
 				'id' => 1,
 				'nome' => 'Teste',
 				'data' => '20/03/2009',
 				'data_falsa' => '30/01/2009',
 				'publicado' => '01/01/2010'
-			)
-		);
-		$this->_testModel('CakePtbrNoticiaSemNada', $esperado);
-	}
+				)
+				);
+				$this->_testModel('CakePtbrNoticiaSemNada', $esperado);
+		}
 
-	function testString() {
-		$esperado = array(
+		function testString() {
+			$esperado = array(
 			'CakePtbrNoticiaString' => array(
 				'id' => 1,
 				'nome' => 'Teste',
 				'data' => '2009-03-20',
 				'data_falsa' => '30/01/2009',
 				'publicado' => '01/01/2010'
-			)
-		);
-		$this->_testModel('CakePtbrNoticiaString', $esperado);
-	}
+				)
+				);
+				$this->_testModel('CakePtbrNoticiaString', $esperado);
+		}
 
-	function testArrayVazio() {
-		$esperado = array(
+		function testArrayVazio() {
+			$esperado = array(
 			'CakePtbrNoticiaArrayVazio' => array(
 				'id' => 1,
 				'nome' => 'Teste',
 				'data' => '20/03/2009',
 				'data_falsa' => '30/01/2009',
 				'publicado' => '01/01/2010'
-			)
-		);
-		$this->_testModel('CakePtbrNoticiaArrayVazio', $esperado);
-	}
+				)
+				);
+				$this->_testModel('CakePtbrNoticiaArrayVazio', $esperado);
+		}
 
-	function testArrayComCampo() {
-		$esperado = array(
+		function testArrayComCampo() {
+			$esperado = array(
 			'CakePtbrNoticiaArrayComCampo' => array(
 				'id' => 1,
 				'nome' => 'Teste',
 				'data' => '2009-03-20',
 				'data_falsa' => '30/01/2009',
 				'publicado' => '01/01/2010'
-			)
-		);
-		$this->_testModel('CakePtbrNoticiaArrayComCampo', $esperado);
-	}
+				)
+				);
+				$this->_testModel('CakePtbrNoticiaArrayComCampo', $esperado);
+		}
 
-	function testArrayComCampos() {
-		$esperado = array(
+		function testArrayComCampos() {
+			$esperado = array(
 			'CakePtbrNoticiaArrayComCampos' => array(
 				'id' => 1,
 				'nome' => 'Teste',
 				'data' => '2009-03-20',
 				'data_falsa' => '30/01/2009',
 				'publicado' => '2010-01-01'
-			)
-		);
-		$this->_testModel('CakePtbrNoticiaArrayComCampos', $esperado);
-	}
+				)
+				);
+				$this->_testModel('CakePtbrNoticiaArrayComCampos', $esperado);
+		}
 
-	function _testModel($nomeModel, $esperado) {
-		$Model = new $nomeModel();
-		$Model->create();
-		$Model->save(array($nomeModel => $this->_envio));
-		$this->assertEqual($Model->data, $esperado);
-	}
+		function _testModel($nomeModel, $esperado) {
+			$Model = new $nomeModel();
+			$Model->create();
+			$Model->save(array($nomeModel => $this->_envio));
+			$this->assertEqual($Model->data, $esperado);
+		}
 
 }
 

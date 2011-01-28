@@ -2,12 +2,12 @@
 
 class Familia extends AppModel {
 
-    var $name = 'Familia';
-    var $displayField = 'nome';
+	var $name = 'Familia';
+	var $displayField = 'nome';
 
-    var $belongsTo = 'Aluno';
+	var $belongsTo = 'Aluno';
 
-    var $validate = array(
+	var $validate = array(
             'idade'=>array(
 		'rule'=>'numeric',
                 'message'=>'Digite um número'),
@@ -16,7 +16,7 @@ class Familia extends AppModel {
                 'required'=>true,
                 'allowEmpty'=>true,
                 'message'=>'Digite somente números inteiros')
-    );
+	);
 }
 
 ?>

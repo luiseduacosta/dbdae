@@ -41,7 +41,7 @@ class Estados {
 			'SP' => 'São Paulo',
 			'SE' => 'Sergipe',
 			'TO' => 'Tocantins'
-		);
+			);
 	}
 
 }

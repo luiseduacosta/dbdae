@@ -84,8 +84,8 @@ class EstadoBrasileiroTestCase extends CakeTestCase {
 			'PR' => 'Paraná',
 			'RS' => 'Rio Grande do Sul',
 			'SC' => 'Santa Catarina'
-		);
-		$this->assertEqual($results, $expected);
+			);
+			$this->assertEqual($results, $expected);
 	}
 
 	function testEstadosDoSudeste() {
@@ -95,8 +95,8 @@ class EstadoBrasileiroTestCase extends CakeTestCase {
 			'MG' => 'Minas Gerais',
 			'RJ' => 'Rio de Janeiro',
 			'SP' => 'São Paulo'
-		);
-		$this->assertEqual($results, $expected);
+			);
+			$this->assertEqual($results, $expected);
 	}
 
 	function testEstadosDoCentroOeste() {
@@ -106,12 +106,12 @@ class EstadoBrasileiroTestCase extends CakeTestCase {
 			'GO' => 'Goiás',
 			'MT' => 'Mato Grosso',
 			'MS' => 'Mato Grosso do Sul'
-		);
-		$this->assertEqual($results, $expected);
+			);
+			$this->assertEqual($results, $expected);
 
-		$results = $this->EstadoBrasileiro->estadosDoCentroOeste(false);
-		unset($expected['DF']);
-		$this->assertEqual($results, $expected);
+			$results = $this->EstadoBrasileiro->estadosDoCentroOeste(false);
+			unset($expected['DF']);
+			$this->assertEqual($results, $expected);
 	}
 
 	function testEstadosDoNorte() {
@@ -124,8 +124,8 @@ class EstadoBrasileiroTestCase extends CakeTestCase {
 			'RO' => 'Rondônia',
 			'RR' => 'Roraima',
 			'TO' => 'Tocantins'
-		);
-		$this->assertEqual($results, $expected);
+			);
+			$this->assertEqual($results, $expected);
 	}
 
 	function testEstadosDoNordeste() {
@@ -140,8 +140,8 @@ class EstadoBrasileiroTestCase extends CakeTestCase {
 			'PE' => 'Pernambuco',
 			'RN' => 'Rio Grande do Norte',
 			'SE' => 'Sergipe'
-		);
-		$this->assertEqual($results, $expected);
+			);
+			$this->assertEqual($results, $expected);
 	}
 
 }

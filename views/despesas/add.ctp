@@ -4,40 +4,28 @@
 
 <?php if ($despesa) {; ?>
 
-<h3>Uma vez finalizado de preencher este quadro com despesass
-<?php echo $html->link('continue','/Alunos/propriedade/' . $aluno_id); ?>
+<h3>Uma vez finalizado de preencher este quadro com despesass <?php echo $html->link('continue','/Alunos/propriedade/' . $aluno_id); ?>
 </h3>
 
 <br />
 
 <table>
-    <tr>
-        <th>Especificação</th>
-        <th>Valor mensal</th>
-        <th>Comprovação</th>
-    </tr>
-    <?php foreach ($despesa as $c_despesa): ?>
-    <tr>
-        <td>
-            <?php echo $c_despesa['Despesa']['especificacao']; ?>
-        </td>
-        <td>
-            <?php echo $c_despesa['Despesa']['valor']; ?>
-        </td>
-        <td>
-            <?php echo $c_despesa['Despesa']['comprovacao']; ?>
-        </td>
-    </tr>
-    <?php endforeach; ?>
+	<tr>
+		<th>Especificação</th>
+		<th>Valor mensal</th>
+		<th>Comprovação</th>
+	</tr>
+	<?php foreach ($despesa as $c_despesa): ?>
+	<tr>
+		<td><?php echo $c_despesa['Despesa']['especificacao']; ?></td>
+		<td><?php echo $c_despesa['Despesa']['valor']; ?></td>
+		<td><?php echo $c_despesa['Despesa']['comprovacao']; ?></td>
+	</tr>
+	<?php endforeach; ?>
 </table>
 <?php }; ?>
 
-<fieldset>
-<legend>
-   Despesas da família 
-</legend>
-
-<?php
+<fieldset><legend> Despesas da família </legend> <?php
 
 echo $form->create('Despesa');
 
@@ -48,6 +36,4 @@ echo $form->input("comprovacao", array("type"=>"select",
 echo $form->input("aluno_id", array("type"=>"text", "value"=>$aluno_id));
 echo $form->end('Inserir despesas');
 
-?>
-
-</fieldset>
+?></fieldset>

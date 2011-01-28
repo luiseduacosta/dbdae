@@ -1,7 +1,6 @@
 <h2>Editar</h2>
 
-<p>
-DRE: <?php echo $aluno['Aluno']['dre']; ?><br>
+<p>DRE: <?php echo $aluno['Aluno']['dre']; ?><br>
 Nome: <?php echo $aluno['Aluno']['nome']; ?><br>
 Curso: <?php echo $aluno['Aluno']['curso']; ?><br>
 Benefício: <?php echo $aluno['Aluno']['beneficio']; ?><br>
@@ -12,39 +11,28 @@ Benefício: <?php echo $aluno['Aluno']['beneficio']; ?><br>
 <?php $i = 1; ?>
 
 <table>
-    <tr>
-    	<th>Id</th>
-        <th>Especificação</th>
-        <th>Quem recebe</th>
-        <th>Quem paga</th>
-        <th>Valor mensal</th>
-        <th>Excluir</th>
-    </tr>
-    
-    <?php foreach ($renda as $c_renda): ?>
-    <tr>
-        <td>
-	<?php echo 
+	<tr>
+		<th>Id</th>
+		<th>Especificação</th>
+		<th>Quem recebe</th>
+		<th>Quem paga</th>
+		<th>Valor mensal</th>
+		<th>Excluir</th>
+	</tr>
+
+	<?php foreach ($renda as $c_renda): ?>
+	<tr>
+		<td><?php echo 
 	$html->link($i++,'/Rendas/edit/'.$c_renda['Renda']['id']);
-	?>
-	</td>
-	<td>
-            <?php echo $c_renda['Renda']['especificacao']; ?>
-        </td>
-        <td>
-            <?php echo $c_renda['Renda']['quem_recebe']; ?>
-        </td>
-        <td>
-            <?php echo $c_renda['Renda']['quem_paga']; ?>
-        </td>
-        <td>
-            <?php echo $c_renda['Renda']['valor_mensal']; ?>
-        </td>
-        <td>
-            <?php echo $html->link('X','excluir/' . $c_renda['Renda']['id']); ?>
-        </td>
-    </tr>
-    <?php endforeach; ?>
+	?></td>
+		<td><?php echo $c_renda['Renda']['especificacao']; ?></td>
+		<td><?php echo $c_renda['Renda']['quem_recebe']; ?></td>
+		<td><?php echo $c_renda['Renda']['quem_paga']; ?></td>
+		<td><?php echo $c_renda['Renda']['valor_mensal']; ?></td>
+		<td><?php echo $html->link('X','excluir/' . $c_renda['Renda']['id']); ?>
+		</td>
+	</tr>
+	<?php endforeach; ?>
 </table>
 <?php }; ?>
 

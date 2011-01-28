@@ -3,60 +3,39 @@
 <h3>Reside com: <?php echo $aluno['Aluno']['reside_com']; ?></h3>
 
 <?php if ($familia) {; ?>
-<h3>Uma vez finalizado de preencher o quadro familiar
-    <?php echo $html->link('continue','/Alunos/familia/'. $aluno_id); ?>
- para confirmar a renda familiar.
-</h3>
+<h3>Uma vez finalizado de preencher o quadro familiar <?php echo $html->link('continue','/Alunos/familia/'. $aluno_id); ?>
+para confirmar a renda familiar.</h3>
 <?php }; ?>
 
 <h2>Aluno: <?php echo $aluno['Aluno']['nome']; ?></h2>
 
 <?php if ($familia) {; ?>
 <table>
-    <tr>
-        <th>Nome</th>
-        <th>Parentesco</th>
-        <th>Idade</th>
-        <th>Instrução</th>
-        <th>Profissão</th>
-        <th>CPF</th>
-        <th>Rendimento</th>
-    </tr>
-    <?php foreach ($familia as $c_familia): ?>
-    <tr>
-        <td>
-        <?php echo $c_familia['Familia']['nome']; ?>
-        </td>
-        <td>
-        <?php echo $c_familia['Familia']['parentesco']; ?>
-        </td>
-        <td>
-        <?php echo $c_familia['Familia']['idade']; ?>
-        </td>
-        <td>
-        <?php echo $c_familia['Familia']['instrucao']; ?>
-        </td>
-        <td>
-        <?php echo $c_familia['Familia']['profissao']; ?>
-        </td>
-        <td>
-        <?php echo $c_familia['Familia']['cpf']; ?>
-        </td>
-        <td>
-        <?php echo $c_familia['Familia']['rendimento']; ?>
-        </td>
-    </tr>
-    <?php endforeach; ?>
+	<tr>
+		<th>Nome</th>
+		<th>Parentesco</th>
+		<th>Idade</th>
+		<th>Instrução</th>
+		<th>Profissão</th>
+		<th>CPF</th>
+		<th>Rendimento</th>
+	</tr>
+	<?php foreach ($familia as $c_familia): ?>
+	<tr>
+		<td><?php echo $c_familia['Familia']['nome']; ?></td>
+		<td><?php echo $c_familia['Familia']['parentesco']; ?></td>
+		<td><?php echo $c_familia['Familia']['idade']; ?></td>
+		<td><?php echo $c_familia['Familia']['instrucao']; ?></td>
+		<td><?php echo $c_familia['Familia']['profissao']; ?></td>
+		<td><?php echo $c_familia['Familia']['cpf']; ?></td>
+		<td><?php echo $c_familia['Familia']['rendimento']; ?></td>
+	</tr>
+	<?php endforeach; ?>
 </table>
-    <?php }; ?>
+<?php }; ?>
 
-<fieldset>
-
-    <legend>
-        Preencher os dados de todas as pessoas que moram na sua casa, inclusive o próprio aluno.
-    </legend>
-
-    <?php
+<fieldset><legend> Preencher os dados de todas as
+pessoas que moram na sua casa, inclusive o próprio aluno. </legend> <?php
 
     echo $form->create('Familia');
     if (!$familia) {
@@ -79,6 +58,4 @@
     echo $form->input("aluno_id", array("type"=>"text", "value"=>$aluno_id));
     echo $form->end('Inserir integrante da família');
 
-?>
-
-</fieldset>
+?></fieldset>

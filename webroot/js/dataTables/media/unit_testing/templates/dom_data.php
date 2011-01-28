@@ -1,39 +1,45 @@
 <?php
-	header( 'Expires: Sat, 26 Jul 1997 05:00:00 GMT' ); 
-	header( 'Last-Modified: ' . gmdate( 'D, d M Y H:i:s' ) . ' GMT' ); 
-	header( 'Cache-Control: no-store, no-cache, must-revalidate' ); 
-	header( 'Cache-Control: post-check=0, pre-check=0', false ); 
-	header( 'Pragma: no-cache' ); 
-?><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+header( 'Expires: Sat, 26 Jul 1997 05:00:00 GMT' );
+header( 'Last-Modified: ' . gmdate( 'D, d M Y H:i:s' ) . ' GMT' );
+header( 'Cache-Control: no-store, no-cache, must-revalidate' );
+header( 'Cache-Control: post-check=0, pre-check=0', false );
+header( 'Pragma: no-cache' );
+?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
-	<head>
-		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-		<link rel="shortcut icon" type="image/ico" href="http://www.sprymedia.co.uk/media/images/favicon.ico" />
-		
-		<title>DataTables unit testing</title>
-		<style type="text/css" title="currentStyle">
-			@import "../../css/demo_page.css";
-			@import "../../css/demo_table.css";
-		</style>
-		<script type="text/javascript" language="javascript" src="../../js/jquery.js"></script>
-		<script type="text/javascript" language="javascript" src="../../js/jquery.dataTables.js"></script>
-		<script type="text/javascript" language="javascript" src="../unit_test.js"></script>
-		<?php
-			$aScripts = split( ":", $_GET['scripts'] );
-			for ( $i=0 ; $i<count($aScripts) ; $i++ )
-			{
-				echo '<script type="text/javascript" language="javascript" src="../'.$aScripts[$i].'?rand='.rand().'"></script>'."\n";
-			}
-		?>
-	</head>
-	<body id="dt_example">
-		<div id="container">
-			<div class="full_width big">
-				<i>DataTables</i> unit test template for reading DOM data
-			</div>
-			
-			<div id="demo">
-<table cellpadding="0" cellspacing="0" border="0" class="display" id="example">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" type="image/ico"
+	href="http://www.sprymedia.co.uk/media/images/favicon.ico" />
+
+<title>DataTables unit testing</title>
+<style type="text/css" title="currentStyle">
+@import "../../css/demo_page.css";
+
+@import "../../css/demo_table.css";
+</style>
+<script type="text/javascript" language="javascript"
+	src="../../js/jquery.js"></script>
+<script type="text/javascript" language="javascript"
+	src="../../js/jquery.dataTables.js"></script>
+<script type="text/javascript" language="javascript"
+	src="../unit_test.js"></script>
+<?php
+$aScripts = split( ":", $_GET['scripts'] );
+for ( $i=0 ; $i<count($aScripts) ; $i++ )
+{
+	echo '<script type="text/javascript" language="javascript" src="../'.$aScripts[$i].'?rand='.rand().'"></script>'."\n";
+}
+?>
+</head>
+<body id="dt_example">
+<div id="container">
+<div class="full_width big"><i>DataTables</i> unit test template for
+reading DOM data</div>
+
+<div id="demo">
+<table cellpadding="0" cellspacing="0" border="0" class="display"
+	id="example">
 	<thead>
 		<tr>
 			<th>Rendering engine</th>
@@ -46,32 +52,28 @@
 	<tbody>
 		<tr class="gradeX">
 			<td>Trident</td>
-			<td>Internet
-				 Explorer 4.0</td>
+			<td>Internet Explorer 4.0</td>
 			<td>Win 95+</td>
 			<td class="center">4</td>
 			<td class="center">X</td>
 		</tr>
 		<tr class="gradeC">
 			<td>Trident</td>
-			<td>Internet
-				 Explorer 5.0</td>
+			<td>Internet Explorer 5.0</td>
 			<td>Win 95+</td>
 			<td class="center">5</td>
 			<td class="center">C</td>
 		</tr>
 		<tr class="gradeA">
 			<td>Trident</td>
-			<td>Internet
-				 Explorer 5.5</td>
+			<td>Internet Explorer 5.5</td>
 			<td>Win 95+</td>
 			<td class="center">5.5</td>
 			<td class="center">A</td>
 		</tr>
 		<tr class="gradeA">
 			<td>Trident</td>
-			<td>Internet
-				 Explorer 6</td>
+			<td>Internet Explorer 6</td>
 			<td>Win 98+</td>
 			<td class="center">6</td>
 			<td class="center">A</td>
@@ -458,8 +460,8 @@
 		</tr>
 	</tfoot>
 </table>
-			</div>
-			<div class="spacer"></div>
-		</div>
-	</body>
+</div>
+<div class="spacer"></div>
+</div>
+</body>
 </html>

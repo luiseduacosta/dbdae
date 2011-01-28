@@ -3,12 +3,12 @@
 // File name   : example_014.php
 // Begin       : 2008-03-04
 // Last Update : 2009-09-30
-// 
+//
 // Description : Example 014 for TCPDF class
 //               Javascript Form and user rights (only works on Adobe Acrobat)
-// 
+//
 // Author: Nicola Asuni
-// 
+//
 // (c) Copyright:
 //               Nicola Asuni
 //               Tecnick.com s.r.l.
@@ -34,7 +34,7 @@ require_once('../config/lang/eng.php');
 require_once('../tcpdf.php');
 
 // create new PDF document
-$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false); 
+$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
 // set document information
 $pdf->SetCreator(PDF_CREATOR);
@@ -62,10 +62,10 @@ $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
 $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
 
 //set image scale factor
-$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO); 
+$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 
 //set some language-dependent strings
-$pdf->setLanguageArray($l); 
+$pdf->setLanguageArray($l);
 
 // ---------------------------------------------------------
 
@@ -76,10 +76,10 @@ $pdf->SetFont('helvetica', '', 10);
 $pdf->AddPage();
 
 /*
-It is possible to create text fields, combo boxes, check boxes and buttons.
-Fields are created at the current position and are given a name.
-This name allows to manipulate them via JavaScript in order to perform some validation for instance.
-*/
+ It is possible to create text fields, combo boxes, check boxes and buttons.
+ Fields are created at the current position and are given a name.
+ This name allows to manipulate them via JavaScript in order to perform some validation for instance.
+ */
 
 // set default form properties
 $pdf->setFormDefaultProp(array('lineWidth'=>1, 'borderStyle'=>'solid', 'fillColor'=>array(255, 255, 200), 'strokeColor'=>array(255, 128, 128)));
@@ -186,6 +186,6 @@ $pdf->IncludeJS($js);
 $pdf->Output('example_014.pdf', 'I');
 
 //============================================================+
-// END OF FILE                                                 
+// END OF FILE
 //============================================================+
 ?>

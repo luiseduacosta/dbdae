@@ -3,12 +3,12 @@
 // File name   : example_003.php
 // Begin       : 2008-03-04
 // Last Update : 2009-09-30
-// 
+//
 // Description : Example 003 for TCPDF class
 //               Custom Header and Footer
-// 
+//
 // Author: Nicola Asuni
-// 
+//
 // (c) Copyright:
 //               Nicola Asuni
 //               Tecnick.com s.r.l.
@@ -49,7 +49,7 @@ class MYPDF extends TCPDF {
 		// Line break
 		$this->Ln(20);
 	}
-	
+
 	// Page footer
 	public function Footer() {
 		// Position at 1.5 cm from bottom
@@ -90,10 +90,10 @@ $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
 $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
 
 //set image scale factor
-$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO); 
+$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 
 //set some language-dependent strings
-$pdf->setLanguageArray($l); 
+$pdf->setLanguageArray($l);
 
 // ---------------------------------------------------------
 
@@ -112,6 +112,6 @@ $pdf->Cell(0, 10, 'Example 003', 0, 1, 'C');
 $pdf->Output('example_003.pdf', 'I');
 
 //============================================================+
-// END OF FILE                                                 
+// END OF FILE
 //============================================================+
 ?>

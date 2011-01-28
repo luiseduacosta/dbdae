@@ -3,12 +3,12 @@
 // File name   : example_051.php
 // Begin       : 2009-04-16
 // Last Update : 2009-09-30
-// 
+//
 // Description : Example 051 for TCPDF class
 //               Full page background
-// 
+//
 // Author: Nicola Asuni
-// 
+//
 // (c) Copyright:
 //               Nicola Asuni
 //               Tecnick.com s.r.l.
@@ -75,10 +75,10 @@ $pdf->setPrintFooter(false);
 $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
 
 //set image scale factor
-$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO); 
+$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 
 //set some language-dependent strings
-$pdf->setLanguageArray($l); 
+$pdf->setLanguageArray($l);
 
 // ---------------------------------------------------------
 
@@ -103,6 +103,6 @@ $pdf->writeHTML('<span style="background-color:yellow;color:blue">PAGE 2</span>'
 $pdf->Output('example_051.pdf', 'I');
 
 //============================================================+
-// END OF FILE                                                 
+// END OF FILE
 //============================================================+
 ?>

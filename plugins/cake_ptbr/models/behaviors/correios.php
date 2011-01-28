@@ -80,7 +80,7 @@ class CorreiosBehavior extends ModelBehavior {
 				'MaoPropria' => $maoPropria,
 				'valorDeclarado' => $valorDeclarado,
 				'avisoRecebimento' => $avisoRecebimento
-			)
+		)
 		);
 		$retornoCorreios = trim($HttpSocket->get($uri));
 		if ($HttpSocket->response['status']['code'] != 200) {
@@ -134,33 +134,33 @@ class CorreiosBehavior extends ModelBehavior {
 			'Largura' => '',
 			'embalagem' => 116600055,
 			'valorD' => ''
-		);
-		$retornoCorreios = $HttpSocket->post($uri, $data);
-		if ($HttpSocket->response['status']['code'] != 200) {
-			return ERRO_CORREIOS_FALHA_COMUNICACAO;
-		}
+			);
+			$retornoCorreios = $HttpSocket->post($uri, $data);
+			if ($HttpSocket->response['status']['code'] != 200) {
+				return ERRO_CORREIOS_FALHA_COMUNICACAO;
+			}
 
-		// Convertendo para o encoding da aplicação. Isto só funciona se a extensão multibyte estiver ativa
-		$encoding = Configure::read('App.encoding');
-		if (function_exists('mb_convert_encoding') && $encoding != null && strcasecmp($encoding, 'iso-8859-1') != 0) {
-			$retornoCorreios = mb_convert_encoding($retornoCorreios, $encoding, 'ISO-8859-1');
-		}
-		// Checar se o conteúdo está lá e reduzir o escopo de busca dos valores
-		if (!preg_match('/\<b\>CEP:\<\/b\>(.*)\<b\>Prazo de Entrega/', $retornoCorreios, $matches)) {
-			return ERRO_CORREIOS_CONTEUDO_INVALIDO;
-		}
-		$escopoReduzido = $matches[1];
-		// Logradouro
-		preg_match('/\<b\>Endere&ccedil;o:\<\/b\>\s*\<\/td\>\s*\<td[^\>]*>([^\<]*)\</', $escopoReduzido, $matches);
-		$logradouro = $matches[1];
-		// Bairro
-		preg_match('/\<b\>Bairro:\<\/b\>\s*\<\/td\>\s*\<td[^\>]*>([^\<]*)\</', $escopoReduzido, $matches);
-		$bairro = $matches[1];
-		// Cidade e Estado
-		preg_match('/\<b\>Cidade\/UF:\<\/b\>\s*\<\/td\>\s*\<td[^\>]*>([^\<]*)\</', $escopoReduzido, $matches);
-		list($cidade, $uf) = explode('/', $matches[1]);
+			// Convertendo para o encoding da aplicação. Isto só funciona se a extensão multibyte estiver ativa
+			$encoding = Configure::read('App.encoding');
+			if (function_exists('mb_convert_encoding') && $encoding != null && strcasecmp($encoding, 'iso-8859-1') != 0) {
+				$retornoCorreios = mb_convert_encoding($retornoCorreios, $encoding, 'ISO-8859-1');
+			}
+			// Checar se o conteúdo está lá e reduzir o escopo de busca dos valores
+			if (!preg_match('/\<b\>CEP:\<\/b\>(.*)\<b\>Prazo de Entrega/', $retornoCorreios, $matches)) {
+				return ERRO_CORREIOS_CONTEUDO_INVALIDO;
+			}
+			$escopoReduzido = $matches[1];
+			// Logradouro
+			preg_match('/\<b\>Endere&ccedil;o:\<\/b\>\s*\<\/td\>\s*\<td[^\>]*>([^\<]*)\</', $escopoReduzido, $matches);
+			$logradouro = $matches[1];
+			// Bairro
+			preg_match('/\<b\>Bairro:\<\/b\>\s*\<\/td\>\s*\<td[^\>]*>([^\<]*)\</', $escopoReduzido, $matches);
+			$bairro = $matches[1];
+			// Cidade e Estado
+			preg_match('/\<b\>Cidade\/UF:\<\/b\>\s*\<\/td\>\s*\<td[^\>]*>([^\<]*)\</', $escopoReduzido, $matches);
+			list($cidade, $uf) = explode('/', $matches[1]);
 
-		return compact('logradouro', 'bairro', 'cidade', 'uf');
+			return compact('logradouro', 'bairro', 'cidade', 'uf');
 	}
 
 }

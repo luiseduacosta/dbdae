@@ -1,17 +1,20 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
-	<head>
-		<meta http-equiv="content-type" content="text/html; charset=utf-8">
-		<link rel="shortcut icon" type="image/ico" href="http://www.sprymedia.co.uk/media/images/favicon.ico">
-		
-		<title>KeyTables example</title>
-		<style type="text/css" title="currentStyle">
-			@import "../../media/css/demo_page.css";
-			@import "../../media/css/demo_table.css";
-		</style>
-		<script type="text/javascript" charset="utf-8" src="../../media/js/jquery.js"></script>
-		<script type="text/javascript" charset="utf-8" src="js/KeyTable.js"></script>
-		<script type="text/javascript" charset="utf-8">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<link rel="shortcut icon" type="image/ico"
+	href="http://www.sprymedia.co.uk/media/images/favicon.ico">
+
+<title>KeyTables example</title>
+<style type="text/css" title="currentStyle">
+@import "../../media/css/demo_page.css";
+
+@import "../../media/css/demo_table.css";
+</style>
+<script type="text/javascript" charset="utf-8"
+	src="../../media/js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/KeyTable.js"></script>
+<script type="text/javascript" charset="utf-8">
 			function fnMessage ( sMesg )
 			{
 				var n = document.getElementById('info');
@@ -77,23 +80,27 @@
 				} );
 			} );
 		</script>
-	</head>
-	<body id="dt_example">
-		<div id="container">
-			<div class="full_width big">
-				KeyTable example
-			</div>
-			
-			<h1>Preamble</h1>
-			<p>KeyTable allows you to use keyboard navigation on an HTML table. The focused cell is shown through the CSS class ('focus') which in the case below is simply a blue border. Events such as 'focus', 'blur', 'esc' (the escape key) and 'return' (the return key) can be assigned event handling functions thought the API presented.</p>
-			<p>The example shown below has a few cells (selected at random, but near the top) with blur and focus events assigned to them. You can also see the navigation around the table using arrow keys.</p>
-			
-			<h1>Live example</h1>
-			<div id="info" class="box">
-				Event information:<br>
-			</div>
-			<div id="demo">
-<table cellpadding="0" cellspacing="0" border="0" class="display KeyTable" id="example">
+</head>
+<body id="dt_example">
+<div id="container">
+<div class="full_width big">KeyTable example</div>
+
+<h1>Preamble</h1>
+<p>KeyTable allows you to use keyboard navigation on an HTML table.
+The focused cell is shown through the CSS class ('focus') which in the
+case below is simply a blue border. Events such as 'focus', 'blur',
+'esc' (the escape key) and 'return' (the return key) can be assigned
+event handling functions thought the API presented.</p>
+<p>The example shown below has a few cells (selected at random, but
+near the top) with blur and focus events assigned to them. You can also
+see the navigation around the table using arrow keys.</p>
+
+<h1>Live example</h1>
+<div id="info" class="box">Event information:<br>
+</div>
+<div id="demo">
+<table cellpadding="0" cellspacing="0" border="0"
+	class="display KeyTable" id="example">
 	<thead>
 		<tr>
 			<th>Rendering engine</th>
@@ -505,12 +512,12 @@
 		</tr>
 	</tbody>
 </table>
-			</div>
-			<div class="spacer"></div>
-			
-			
-			<h1>Initialisation code</h1>
-			<pre>function fnMessage ( sMesg )
+</div>
+<div class="spacer"></div>
+
+
+<h1>Initialisation code</h1>
+<pre>function fnMessage ( sMesg )
 {
 	var n = document.getElementById('info');
 	n.innerHTML += sMesg+"&lt;br&gt;";
@@ -574,21 +581,20 @@ $(document).ready( function () {
 		}
 	} );
 } );</pre>
-			
-			
-			<h1>Other examples</h1>
-			<ul>
-				<li><a href="index.html">Basic usage</a></li>
-				<li><a href="editing.html">Editing a table</a></li>
-				<li><a href="form.html">Integration with an HTML form</a></li>
-				<li><a href="datatable.html">Integration with DataTables</a></li>
-			</ul>
-			
-			<div id="footer" style="text-align:center;">
-				<span style="font-size:10px;">
-					KeyTable &copy; Allan Jardine 2009.<br>
-					Information in the table &copy; <a href="http://www.u4eatech.com">U4EA Technologies</a> 2007-2009.</span>
-			</div>
-		</div>
-	</body>
+
+
+<h1>Other examples</h1>
+<ul>
+	<li><a href="index.html">Basic usage</a></li>
+	<li><a href="editing.html">Editing a table</a></li>
+	<li><a href="form.html">Integration with an HTML form</a></li>
+	<li><a href="datatable.html">Integration with DataTables</a></li>
+</ul>
+
+<div id="footer" style="text-align: center;"><span
+	style="font-size: 10px;"> KeyTable &copy; Allan Jardine 2009.<br>
+Information in the table &copy; <a href="http://www.u4eatech.com">U4EA
+Technologies</a> 2007-2009.</span></div>
+</div>
+</body>
 </html>

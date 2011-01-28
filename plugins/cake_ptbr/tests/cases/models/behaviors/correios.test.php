@@ -39,26 +39,26 @@ class CorreiosBehaviorTest extends CorreiosBehavior {
 		'bairro' => 'Santa Mônica',
 		'cidade' => 'Florianópolis',
 		'uf' => 'SC'
-	);
+		);
 
 
-	function valorFrete($servico, $cepOrigem, $cepDestino, $peso, $maoPropria = false, $valorDeclarado = 0.0, $avisoRecebimento = false) {
-		$model = null;
-		$retorno = parent::valorFrete($model, $servico, $cepOrigem, $cepDestino, $peso, $maoPropria, $valorDeclarado, $avisoRecebimento);
-		if ($retorno === ERRO_CORREIOS_FALHA_COMUNICACAO) {
-			return $this->_valorFrete;
+		function valorFrete($servico, $cepOrigem, $cepDestino, $peso, $maoPropria = false, $valorDeclarado = 0.0, $avisoRecebimento = false) {
+			$model = null;
+			$retorno = parent::valorFrete($model, $servico, $cepOrigem, $cepDestino, $peso, $maoPropria, $valorDeclarado, $avisoRecebimento);
+			if ($retorno === ERRO_CORREIOS_FALHA_COMUNICACAO) {
+				return $this->_valorFrete;
+			}
+			return $retorno;
 		}
-		return $retorno;
-	}
 
-	function endereco($cep) {
-		$model = null;
-		$retorno = parent::endereco($model, $cep);
-		if ($retorno === ERRO_CORREIOS_FALHA_COMUNICACAO) {
-			return $this->_endereco;
+		function endereco($cep) {
+			$model = null;
+			$retorno = parent::endereco($model, $cep);
+			if ($retorno === ERRO_CORREIOS_FALHA_COMUNICACAO) {
+				return $this->_endereco;
+			}
+			return $retorno;
 		}
-		return $retorno;
-	}
 
 }
 
@@ -102,8 +102,8 @@ class CakePtbrCorreiosCase extends CakeTestCase {
 			'bairro' => 'Santa Mônica',
 			'cidade' => 'Florianópolis',
 			'uf' => 'SC'
-		);
-		$this->assertEqual($correios, $correto);
+			);
+			$this->assertEqual($correios, $correto);
 	}
 
 }
