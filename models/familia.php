@@ -8,12 +8,14 @@ class Familia extends AppModel {
     var $belongsTo = 'Aluno';
 
     var $validate = array(
-            'idade'=>array('rule'=>'numeric',
-                            'message'=>'Digite um número'),
-            'rendimento'=>array('rule'=>'numeric',
-                            'required'=>false,
-                            'allowEmpty'=>true,
-                            'message'=>'Digite somente números inteiros')
+            'idade'=>array(
+		'rule'=>'numeric',
+                'message'=>'Digite um número'),
+            'rendimento'=>array(
+		'rule'=>'numeric',
+                'required'=>true,
+                'allowEmpty'=>true,
+                'message'=>'Digite somente números inteiros')
     );
 }
 

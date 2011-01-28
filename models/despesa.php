@@ -1,7 +1,7 @@
 <?php
 
 class Despesa extends AppModel {
-	
+
 	var $name = 'Despesa';
 	var $displayField = 'especificacao';
 

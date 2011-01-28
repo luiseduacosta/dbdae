@@ -1,11 +1,13 @@
 <?php
 
-class UseresController extends AppController {
+class UsersController extends AppController {
 
-    var $name = 'Useres';
+    var $name = 'Users';
 
     function login() {
 
+        var_dump(($this->Auth->data));
+        
     }
 
     function logout() {
